@@ -21,7 +21,7 @@ Supports **admin and user roles**, **JWT authentication with HTTP-only cookies**
 - 🧪 **Testing**
   - Unit & integration testing with **Jest**
 - ☁️ **Deployment-Ready**
-  - Configured for **GCP Cloud Run**
+  - Configured for **GCP Cloud Run** (to be done soon)
 
 ---
 
@@ -36,7 +36,7 @@ Supports **admin and user roles**, **JWT authentication with HTTP-only cookies**
 | **Validation**   | `class-validator` + `ValidationPipe` |
 | **Error Handling** | Global `HttpExceptionFilter` |
 | **Testing**      | Jest (unit & integration) |
-| **Deployment**   | GCP Cloud Run |
+| **Deployment**   | GCP Cloud Run (to be done soon)|
 
 ---
 
