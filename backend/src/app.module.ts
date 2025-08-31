@@ -13,13 +13,14 @@ import {JwtModule} from "@nestjs/jwt";
 import {AuthController} from "./auth/auth.controller";
 import {MoviesController} from "./movies/movie.controller";
 import {UsersController} from "./users/users.controller";
+import * as process from "process";
 
 @Module({
   imports: [
       TypeOrmModule.forRoot(typeOrmConfig),
       TypeOrmModule.forFeature([User, Movie]),
       JwtModule.register({
-          secret:'strong-secret-key',
+          secret:process.env.JWT_SECRET,
           signOptions: {expiresIn: '1d'}
       }),
       ConfigModule,

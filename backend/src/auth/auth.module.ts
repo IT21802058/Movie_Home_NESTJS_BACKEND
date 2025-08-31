@@ -6,14 +6,12 @@ import {AuthController} from "./auth.controller";
 import {UsersModule} from "../users/users.module";
 import {JwtAuthGuard} from "../guards/jwt-auth.guard";
 import {RolesGuard} from "../guards/roles.guard";
+import * as process from "process";
 
 @Module({
     imports: [
         UsersModule,
-        JwtModule.register({
-            secret: 'strong-secret-key',
-            signOptions: { expiresIn: '1d' },
-        }),
+        JwtModule.register({}),
     ],
     providers: [AuthService, JwtStrategy, JwtAuthGuard, RolesGuard],
     controllers: [AuthController],
