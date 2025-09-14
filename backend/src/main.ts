@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import cookieParser from "cookie-parser";
 import {BadRequestException, ValidationPipe} from "@nestjs/common";
 import {HttpExceptionFilter} from "./filters/http-exception.filter";
-import {RolesGuard} from "./guards/roles.guard";
+import * as Process from "process";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,14 +18,14 @@ async function bootstrap() {
   app.use(cookieParser());
 
   // Global validation pipe
-  app.useGlobalPipes(
-      new ValidationPipe({
-        whitelist: true,
-        forbidNonWhitelisted: true,
-        transform: true,
-        exceptionFactory: (errors) => new BadRequestException(errors),
-      }),
-  );
+  // app.useGlobalPipes(
+  //     new ValidationPipe({
+  //       whitelist: true,
+  //       forbidNonWhitelisted: true,
+  //       transform: true,
+  //       exceptionFactory: (errors) => new BadRequestException(errors),
+  //     }),
+  // );
 
   // Global exception filter
   app.useGlobalFilters(new HttpExceptionFilter());

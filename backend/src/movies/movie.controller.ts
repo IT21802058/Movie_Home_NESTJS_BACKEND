@@ -27,6 +27,7 @@ export class MoviesController {
         return this.moviesService.findAll();
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(':id')
     findOne(@Param('id', ParseUUIDPipe) id: string) {
         return this.moviesService.findOne(id);
