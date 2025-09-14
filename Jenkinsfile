@@ -10,21 +10,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                cms /s/bin/sh -c 'npm install'
+                cms /s/bin/sh -c 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                cms /s/bin/sh -c 'npm test'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+                    cms /s/bin/sh -c 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
                 }
             }
         }
@@ -32,15 +32,14 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 script {
-                    // Replace with your Docker Hub credentials
-                    sh 'echo "Osadha?2001" | docker login -u $DOCKER_HUB_USER --password-stdin'
+                    cms /s/bin/sh -c 'echo "Osadha?2001" | docker login -u $DOCKER_HUB_USER --password-stdin'
                 }
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
-                sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
+                cms /s/bin/sh -c 'docker push $IMAGE_NAME:$IMAGE_TAG'
             }
         }
     }
